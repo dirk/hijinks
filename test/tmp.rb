@@ -1,0 +1,30 @@
+HIVM_LIB = File.join(File.dirname(__FILE__), '..', '..', 'hivm', 'libhivm.so')
+
+require 'rubygems'
+# Development load-paths
+$:.unshift File.join(File.dirname(__FILE__), "..", "..", "hivm-ruby", "lib")
+$:.unshift File.join(File.dirname(__FILE__), '..', 'lib')
+require 'hijinks'
+require 'pp'
+
+# vm = Hivm::VM.new
+# gen = Hivm::Generator.new vm
+# 
+# gen.set_symbol Hivm.general_register(1), "_test"
+# gen.callsymbolic Hivm.general_register(1), Hivm.general_register(2)
+# gen.die
+# 
+# chunk = gen.to_chunk()
+# chunk.disassemble
+
+source = "
+var a = true;
+console.log(a);
+"
+
+lexer = Twostroke::Lexer.new(source)
+parser = Twostroke::Parser.new lexer
+parser.parse
+
+tree = parser.statements
+pp tree
