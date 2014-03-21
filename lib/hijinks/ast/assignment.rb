@@ -22,7 +22,7 @@ module Hijinks::AST
       # Name of the local var
       gen.set_symbol left_reg, @left.name
       # Value of the right hand side
-      @right.compile_to(gen, right_reg)
+      @right.compile_to(block, gen, right_reg)
       # Then assign
       gen.setlocal left_reg, right_reg
       

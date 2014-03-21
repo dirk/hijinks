@@ -13,8 +13,11 @@ module Hijinks::AST
       end
     end
     def next_reg
+      if @regs == 127
+        raise "Out of registers"
+      end
       @regs += 1
-      return @regs
+      return Hivm.general_register(@regs)
     end
   end
 end
