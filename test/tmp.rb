@@ -26,5 +26,19 @@ lexer = Twostroke::Lexer.new(source)
 parser = Twostroke::Parser.new lexer
 parser.parse
 
-tree = parser.statements
-pp tree
+# tree = parser.statements
+# pp tree
+statements = Hijinks::AST.from_twostroke(parser.statements)
+block = Hijinks::AST::Block.new(statements)
+
+vm  = Hivm::VM.new
+gen = Hivm::Generator.new vm
+
+# tree.map {|s| s.compile gen }
+block.compile gen
+
+chunk = gen.to_chunk
+chunk.disassemble
+
+#vm.load_chunk chunk
+#vm.run
