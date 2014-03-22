@@ -18,7 +18,7 @@ require 'pp'
 # chunk.disassemble
 
 source = "
-var a = \"test\";
+var a = \"test\n\";
 console.log(a);
 "
 
@@ -34,13 +34,21 @@ block = Hijinks::AST::Block.new(statements)
 vm  = Hivm::VM.new
 gen = Hivm::Generator.new vm
 
+vm.bootstrap_primitives
 Hijinks::Bootstrap.bootstrap vm
+
+
+#vm.run
+#exit 0
 
 # tree.map {|s| s.compile gen }
 block.compile gen
 
 chunk = gen.to_chunk
-chunk.disassemble
+# chunk.disassemble
+vm.load_chunk chunk
+
+Hivm.hvm_print_data(vm[:program], vm[:program_size])
 
 #vm.load_chunk chunk
-#vm.run
+vm.run

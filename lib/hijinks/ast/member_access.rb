@@ -21,8 +21,8 @@ module Hijinks::AST
       dest_reg   = reg
       gen.structget dest_reg, struct_reg, key_reg
       
-      puts @object.inspect
-      puts @member.inspect
+      # puts @object.inspect
+      # puts @member.inspect
     end
     def compile block, gen
       raise NotImplementedError, "call:\n\t#{inspect}"
