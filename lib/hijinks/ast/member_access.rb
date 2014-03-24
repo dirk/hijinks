@@ -1,6 +1,6 @@
 module Hijinks::AST
   class MemberAccess < Base
-    attr_accessor :object, :member
+    attr_accessor :object, :member, :line, :name
     
     def self.from_twostroke a
       ma = new
@@ -10,6 +10,8 @@ module Hijinks::AST
     def twostroke= ts
       @object = Hijinks::AST::Base.from_twostroke ts.object
       @member = ts.member
+      @line = @object.line
+      @name = @object.name+'.'+@member
       self
     end
     def compile_to block, gen, reg

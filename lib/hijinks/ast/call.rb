@@ -13,7 +13,14 @@ module Hijinks::AST
       @arguments = ts.arguments.map {|a| Hijinks::AST::Base.from_twostroke a }
       self
     end
+    def line
+      @callee.line
+    end
+    def name
+      @callee.name
+    end
     def compile_to block, gen, reg
+      gen.debug_entry self.line, self.name
       callee_reg = block.next_reg
       # Getting the calle
       @callee.compile_to(block, gen, callee_reg)

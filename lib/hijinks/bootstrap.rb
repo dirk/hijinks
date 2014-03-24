@@ -45,7 +45,7 @@ module Hijinks
       def console_functions b, gen
         # Log function
         b.sub "console.log"
-        b.debug_entry 0, "console.log"
+        b.debug_entry 0, "hijinks::console.log"
         string_reg = Hivm.param_register(0)
         sym_reg    = Hivm.general_register(0)
         # Copy string parameter into the argument

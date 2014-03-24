@@ -17,9 +17,15 @@ require 'pp'
 # chunk = gen.to_chunk()
 # chunk.disassemble
 
+# source = "
+# var a = \"test\n\";
+# console.log(a);
+# "
 source = "
-var a = \"test\n\";
-console.log(a);
+function a(b) {
+  return b;
+}
+console.log(a(\"test\n\"));
 "
 
 lexer = Twostroke::Lexer.new(source)
@@ -28,8 +34,8 @@ parser.parse
 
 # tree = parser.statements
 # pp tree
-statements = Hijinks::AST.from_twostroke(parser.statements)
-block = Hijinks::AST::Block.new(statements)
+block = Hijinks::AST::Block.new(parser.statements)
+# pp block
 
 vm  = Hivm::VM.new
 gen = Hivm::Generator.new vm
@@ -48,9 +54,9 @@ block.compile gen
 
 chunk = gen.to_chunk
 # chunk.disassemble
+# exit 0
 vm.load_chunk chunk
 
 # Hivm.hvm_print_data(vm[:program], vm[:program_size])
 
-#vm.load_chunk chunk
 vm.run

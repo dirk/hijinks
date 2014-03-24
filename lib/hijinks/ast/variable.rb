@@ -1,9 +1,13 @@
 module Hijinks::AST
   class Variable < Base
-    attr_accessor :name
+    attr_accessor :name, :line
     
-    def initialize name
+    def initialize name, line
       @name = name
+      @line = line
+    end
+    def self.from_twostroke v
+      return new(v.name, v.line)
     end
     def compile_to block, gen, reg
       gen.set_symbol reg, @name

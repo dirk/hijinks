@@ -4,7 +4,7 @@ module Hijinks::AST
     attr_accessor :statements, :regs
     
     def initialize stmts
-      @statements = stmts
+      @statements = stmts.map {|s| Hijinks::AST::Base.from_twostroke s }
     end
     def compile g
       @regs = -1
