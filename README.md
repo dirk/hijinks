@@ -1,6 +1,6 @@
 # Hijinks
 
-Experimental JavaScript engine running on the Hivm virtual machine.
+Experimental JavaScript engine running on the [Hivm](http://hivm.org/) virtual machine.
 
 ## Installation
 
@@ -22,7 +22,7 @@ TODO: Write usage instructions here
 
 ## Contributing
 
-1. Fork it ( http://github.com/<my-github-username>/hijinks/fork )
+1. Fork it (https://github.com/dirk/hijinks/fork)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
