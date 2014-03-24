@@ -42,13 +42,15 @@ Hijinks::Bootstrap.bootstrap vm
 #exit 0
 
 # tree.map {|s| s.compile gen }
+gen.set_file "(main)"
+gen.debug_entry 1, "(main)"
 block.compile gen
 
 chunk = gen.to_chunk
 # chunk.disassemble
 vm.load_chunk chunk
 
-Hivm.hvm_print_data(vm[:program], vm[:program_size])
+# Hivm.hvm_print_data(vm[:program], vm[:program_size])
 
 #vm.load_chunk chunk
 vm.run
