@@ -46,6 +46,7 @@ module Hijinks
         # Log function
         b.sub "console.log"
         b.debug_entry 0, "hijinks::console.log"
+        b.debug_flags Hivm.DEBUG_FLAG_HIDE_BACKTRACE
         string_reg = Hivm.param_register(0)
         sym_reg    = Hivm.general_register(0)
         # Copy string parameter into the argument

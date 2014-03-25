@@ -25,7 +25,7 @@ source = "
 function a(b) {
   return b;
 }
-console.log(a(\"test\n\"));
+console.log(a(\"test\\n\"));
 "
 
 lexer = Twostroke::Lexer.new(source)
@@ -40,7 +40,7 @@ block = Hijinks::AST::Block.new(parser.statements)
 vm  = Hivm::VM.new
 gen = Hivm::Generator.new vm
 
-vm.bootstrap_primitives
+# vm.bootstrap_primitives
 Hijinks::Bootstrap.bootstrap vm
 
 
