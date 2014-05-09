@@ -36,7 +36,7 @@ module Hijinks::AST
 
       gen.label label
       # Create the function object
-      sym  = block.next_reg
+      sym = block.next_reg
       gen.set_symbol sym, "_js_new_function"
       gen.set_symbol Hivm.arg_register(0), sub
       gen.callsymbolic sym, reg

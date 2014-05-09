@@ -23,6 +23,7 @@ require 'pp'
 # "
 source = "
 function a(b) {
+  return c;
   return b;
 }
 console.log(a(\"test\\n\"));
@@ -40,7 +41,7 @@ block = Hijinks::AST::Block.new(parser.statements)
 vm  = Hivm::VM.new
 gen = Hivm::Generator.new vm
 
-# vm.bootstrap_primitives
+vm.bootstrap_primitives
 Hijinks::Bootstrap.bootstrap vm
 
 
